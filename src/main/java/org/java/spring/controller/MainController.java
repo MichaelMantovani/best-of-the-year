@@ -1,6 +1,7 @@
 package org.java.spring.controller;
 
 import org.java.spring.pojo.Movie;
+import org.java.spring.pojo.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +24,28 @@ public class MainController {
 
 		return movies[0].getTitle() + " , " + movies[1].getTitle() + " , " + movies[2].getTitle();
 	}
+	
+	private String getBestSongs() {
+		Song[] songs = new Song[3];
+		songs[0] = new Song(1, "Dogozilla");
+		songs[1] = new Song(2, "Milano Roma pt.II");
+		songs[2] = new Song(2, "When I B On Tha Mic");
+
+		return songs[0].getTitle() + " , " + songs[1].getTitle() + " , " + songs[2].getTitle();
+	}
 
 	@GetMapping("/movies")
-	public String getMovies(Model model) {
+	public String getMoviesPage(Model model) {
 		final String movies = getBestMovies();
 		model.addAttribute("movies", movies);
 		return "movies";
+	}
+	
+	@GetMapping("/songs")
+	public String getSongsPage(Model model) {
+		final String songs = getBestSongs();
+		model.addAttribute("songs", songs);
+		return "songs";
 	}
 
 }
