@@ -1,5 +1,9 @@
 package org.java.spring.controller;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.java.spring.pojo.Movie;
 import org.java.spring.pojo.Song;
 import org.springframework.stereotype.Controller;
@@ -16,13 +20,16 @@ public class MainController {
 		return "home";
 	}
 
-	private String getBestMovies() {
-		Movie[] movies = new Movie[3];
-		movies[0] = new Movie(1, "Killers of the flower moon");
-		movies[1] = new Movie(2, "Oppenheimer");
-		movies[2] = new Movie(2, "Io Capitano");
+	private List<Movie> getBestMovies() {
+		Movie killers = new Movie(1, "Killers of the flower moon");
+		Movie oppenheimer = new Movie(2, "Oppenheimer");
+		Movie ioCapitano = new Movie(2, "Io Capitano");
+		
+		List<Movie> bestMovies = new ArrayList<>();
+		bestMovies.addAll(List.of(killers,oppenheimer,ioCapitano));
+		
+		return bestMovies;
 
-		return movies[0].getTitle() + " , " + movies[1].getTitle() + " , " + movies[2].getTitle();
 	}
 	
 	private String getBestSongs() {
@@ -36,8 +43,17 @@ public class MainController {
 
 	@GetMapping("/movies")
 	public String getMoviesPage(Model model) {
-		final String movies = getBestMovies();
-		model.addAttribute("movies", movies);
+		List<Movie> movies = getBestMovies();
+		String bestMovies = "";
+		int index = 0;
+		for (Movie movie : movies) {
+			if(index == movies.size() -1 )
+			bestMovies += movie.getTitle();
+			else
+				bestMovies += movie.getTitle() + " , ";
+			index++;
+		}
+		model.addAttribute("movies", bestMovies);
 		return "movies";
 	}
 	
