@@ -32,18 +32,20 @@ public class MainController {
 
 	}
 	
-	private String getBestSongs() {
-		Song[] songs = new Song[3];
-		songs[0] = new Song(1, "Dogozilla");
-		songs[1] = new Song(2, "Milano Roma pt.II");
-		songs[2] = new Song(2, "When I B On Tha Mic");
-
-		return songs[0].getTitle() + " , " + songs[1].getTitle() + " , " + songs[2].getTitle();
+	private List<Song> getBestSongs() {
+		
+		Song song1 = new Song(1, "Dogozilla");
+		Song  song2 = new Song(2, "Milano Roma pt.II");
+		Song song3 = new Song(2, "When I B On Tha Mic");
+		
+		List<Song> bestSongs = new ArrayList<>();
+		bestSongs.addAll(List.of(song1,song2,song3));
+		return bestSongs;
 	}
 
 	@GetMapping("/movies")
 	public String getMoviesPage(Model model) {
-		List<Movie> movies = getBestMovies();
+		final List<Movie> movies = getBestMovies();
 		String bestMovies = "";
 		int index = 0;
 		for (Movie movie : movies) {
@@ -59,8 +61,17 @@ public class MainController {
 	
 	@GetMapping("/songs")
 	public String getSongsPage(Model model) {
-		final String songs = getBestSongs();
-		model.addAttribute("songs", songs);
+		final List<Song> songs = getBestSongs();
+		String bestSongs = "";
+		int index = 0;
+		for (Song song : songs) {
+			if(index == songs.size() -1 )
+			bestSongs += song.getTitle();
+			else
+				bestSongs += song.getTitle() + " , ";
+			index++;
+		}
+		model.addAttribute("songs", bestSongs);
 		return "songs";
 	}
 
