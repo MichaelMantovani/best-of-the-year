@@ -76,7 +76,7 @@ public class MainController {
 		return "songs";
 	}
 	
-	@GetMapping("/songs/{id}")
+	@GetMapping("/song/{id}")
 	public String getSongDetailPage(Model model, @PathVariable int id) {
 		model.getAttribute("id");
 		final List<Song> songs = getBestSongs();
@@ -85,6 +85,17 @@ public class MainController {
 				model.addAttribute("song", song.getTitle());
 		}
 		return "songDetail";
+	}
+	
+	@GetMapping("/movie/{id}")
+	public String getMovieDetailPage(Model model, @PathVariable int id) {
+		model.getAttribute("id");
+		final List<Movie> movies = getBestMovies();
+		for (Movie movie : movies) {
+			if(movie.getId() == id)
+				model.addAttribute("movie", movie.getTitle());
+		}
+		return "movieDetail";
 	}
 	
 
