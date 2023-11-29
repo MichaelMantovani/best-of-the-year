@@ -11,7 +11,7 @@
 	Best movies of the year 
 </h1>
 <ul class="mt-4">
-	<li class="m-2" th:each="movie : ${movies}"><a class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover" href="@{movie/{id}(id${movie.id}}">[[${movie.title}]]</a></li>
+	<li class="m-2" th:each="movie : ${movies}"><a class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover" th:href="@{movie/{movieId}(movieId=${movie.id})}">[[${movie.title}]]</a></li>
 </ul>
 <a class="text-decoration-none btn btn-secondary btn-sm" href="/">Return home</a>
 	</div>

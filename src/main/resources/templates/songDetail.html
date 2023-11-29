@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
+	<title>Insert title here</title>
 </head>
+
 <body>
-<h1>
-	Song id: [[${id}]]
-</h1>
-<h2>
-	Title: <i>[[${song}]]</i>
-</h2>
-<button><a style="color: black; text-decoration: none;" href="/songs">Return to songs list</a></button>
+	<div class="container text-center mt-4">
+		<h3>
+			Song with id --> [[${id}]]
+		</h3>
+		<h1>[[${song.title}]]</h1>
+		<a class="text-decoration-none btn btn-secondary btn-sm mt-5" href="/songs">Return to song list</a>
+	</div>
+
 </body>
+
 </html>

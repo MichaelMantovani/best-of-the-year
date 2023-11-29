@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="ISO-8859-1">
-	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" />
 	<title>Insert title here</title>
 </head>
 
@@ -13,9 +13,9 @@
 			Best songs of the year
 		</h1>
 		<ul class="mt-4">
-			<li class="m-2" th:each="song : ${songs}"><a
-					class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover"
-					href="@{song/{id}(id${song.id}}">[[${song.title}]]</a></li>
+			<li class="m-2" th:each="song : ${songs}">
+				<a class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover"
+					th:href="@{/song/{songId}(songId=${song.id})}">[[${song.title}]]</a></li>
 		</ul>
 		<a class="text-decoration-none btn btn-secondary btn-sm" href="/">Return home</a>
 	</div>
