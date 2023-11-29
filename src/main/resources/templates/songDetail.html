@@ -13,7 +13,7 @@
 			Song with id --> [[${id}]]
 		</h3>
 		<h1>[[${song.title}]]</h1>
-		<a class="text-decoration-none btn btn-secondary btn-sm mt-5" href="/songs">Return to song list</a>
+		<a th:replace="returnButton :: button('/songs', 'Return to songs list')"></a>
 	</div>
 
 </body>

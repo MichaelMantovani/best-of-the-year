@@ -17,7 +17,7 @@
 				<a class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover"
 					th:href="@{/song/{songId}(songId=${song.id})}">[[${song.title}]]</a></li>
 		</ul>
-		<a class="text-decoration-none btn btn-secondary btn-sm" href="/">Return home</a>
+		<a th:replace="returnButton :: button('/', 'Return home')"></a>
 	</div>
 
 </body>
