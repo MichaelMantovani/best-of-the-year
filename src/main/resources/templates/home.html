@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
 <title>Insert title here</title>
 </head>
 <body>
@@ -9,7 +10,7 @@
 	Best of the year by [[${username}]]
 </h1>
 <ul style="list-style: none;display: flex; gap: 1rem;">
-	<li style="margin-bottom: 1rem;"><button><a style="color: black; text-decoration: none;" href="/movies">Movies</a></button></li>
+	<li style="margin-bottom: 1rem;"><button class="btn btn-primary"><a style="color: black; text-decoration: none;" href="/movies">Movies</a></button></li>
 	<li style="margin-bottom: 1rem;"><button><a style="color: black; text-decoration: none;" href="/songs">Songs</a></button></li>
 </ul>
 </body>
