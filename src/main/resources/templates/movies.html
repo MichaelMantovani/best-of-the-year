@@ -6,26 +6,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="margin: 0 auto; max-width: 1080px;"> 
+	<div class="container mt-3"> 
 		<h1>
 	Best movies of the year 
 </h1>
-<h4>
-	[[${movies}]]
-</h4>
-<h5>See detail of:</h5>
-<ul style="list-style: none;display: flex; gap: 1rem;" >
-	<li>
-		<button><a style="color: black; text-decoration: none;padding: 5px;" href="/movie/1">Killers of the flower moon</a></button>
-	</li>
-	<li>
-		<button><a style="color: black; text-decoration: none;" href="/movie/2">Oppenheimer </a></button>
-	</li>
-	<li>
-		<button><a style="color: black; text-decoration: none;" href="/movie/">Io Capitano</a></button>
-	</li>
+<ul class="mt-4">
+	<li class="m-2" th:each="movie : ${movies}"><a class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover" href="@{movie/{id}(id${movie.id}}">[[${movie.title}]]</a></li>
 </ul>
-<button style="margin-top: 10rem;"><a style="color: black; text-decoration: none;" href="/">Return home</a></button>
+<a class="text-decoration-none btn btn-secondary btn-sm" href="/">Return home</a>
 	</div>
 
 </body>

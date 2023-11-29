@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+	<meta charset="ISO-8859-1">
+	<link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}"/>
+	<title>Insert title here</title>
 </head>
+
 <body>
-	<div style="margin: 0 auto; max-width: 1080px;"> 
+	<div class="container mt-3">
 		<h1>
-	Best songs of the year 
-</h1>
-<h4>
-	[[${songs}]]
-</h4>
-<h5>See detail of:</h5>
-<ul style="list-style: none;display: flex; gap: 1rem;" >
-	<li>
-		<button><a style="color: black; text-decoration: none;" href="/song/1">Dogozilla</a></button>
-	</li>
-	<li>
-		<button><a style="color: black; text-decoration: none;" href="/song/2">Milano Roma pt.II </a></button>
-	</li>
-	<li>
-		<button><a style="color: black; text-decoration: none;" href="/song/3">When I B On Tha Mic</a></button>
-	</li>
-</ul>
-<button style="margin-top: 10rem;"><a style="color: black; text-decoration: none;" href="/">Return home</a></button>
+			Best songs of the year
+		</h1>
+		<ul class="mt-4">
+			<li class="m-2" th:each="song : ${songs}"><a
+					class="text-decoration-none badge rounded-pill text-bg-primary link-light link-underline-opacity-100-hover"
+					href="@{song/{id}(id${song.id}}">[[${song.title}]]</a></li>
+		</ul>
+		<a class="text-decoration-none btn btn-secondary btn-sm" href="/">Return home</a>
 	</div>
 
 </body>
+
 </html>
